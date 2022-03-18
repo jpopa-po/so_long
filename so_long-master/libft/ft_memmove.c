@@ -3,32 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <agallipo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 21:35:14 by agallipo          #+#    #+#             */
-/*   Updated: 2021/09/23 11:30:58 by agallipo         ###   ########.fr       */
+/*   Created: 2021/05/19 16:42:44 by jpopa-po          #+#    #+#             */
+/*   Updated: 2022/02/11 17:09:32 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t len)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t			i;
-	unsigned char	*aux_dest;
-	unsigned char	*aux_src;
+	char			*ccs;
+	char			*ccd;
 
-	aux_dest = ((unsigned char *)dest);
-	aux_src = ((unsigned char *)src);
-	i = 0;
-	if (aux_dest > aux_src)
+	ccs = (char *)src;
+	ccd = (char *)dest;
+	if (ccs < ccd)
 	{
-		while (len-- != 0)
+		n--;
+		while (n + 1 > 0)
 		{
-			aux_dest[len] = aux_src[len];
+			ccd[n] = ccs[n];
+			n--;
 		}
 	}
 	else
-		ft_memcpy(aux_dest, aux_src, len);
-	return (aux_dest);
+		ft_memcpy(ccd, ccs, n);
+	return (ccd);
 }
+/*
+int	main(void)
+{
+	char		dest[] = "old";
+	const char	src[] = "new";
+
+	printf("Before memmove = %s | src = %s\n", dest, src);
+	ft_memmove(dest, src, 9);
+	printf("After memmove = %s | src = %s\n", dest, src);
+	return (0);
+}
+*/

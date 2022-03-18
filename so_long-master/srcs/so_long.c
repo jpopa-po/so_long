@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <agallipo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juancarlospopapopa <juancarlospopapopa@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 12:44:21 by agallipo          #+#    #+#             */
-/*   Updated: 2022/02/01 16:15:08 by agallipo         ###   ########.fr       */
+/*   Created: 2022/03/18 09:10:27 by juancarlosp       #+#    #+#             */
+/*   Updated: 2022/03/18 09:10:46 by juancarlosp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

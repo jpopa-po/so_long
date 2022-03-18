@@ -3,39 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/21 13:27:35 by agallipo          #+#    #+#             */
-/*   Updated: 2021/06/21 13:27:39 by agallipo         ###   ########.fr       */
+/*   Created: 2021/05/28 18:32:11 by jpopa-po          #+#    #+#             */
+/*   Updated: 2022/02/11 17:16:27 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *nptr)
 {
-	long	val;
-	long	num;
+	long	n;
 	long	i;
+	long	sign;
 
+	n = 0;
 	i = 0;
-	num = 0;
-	val = 1;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+	sign = 1;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (nptr[i] == 45)
 	{
-		if (str[i] == '-')
-			val = -1;
+		sign = -1;
 		i++;
 	}
-	while (str[i] && (str[i] >= 48 && str[i] <= 57))
+	else if (nptr[i] == 43 || nptr[i] == 45)
+		i++;
+	while (nptr[i] && ft_isdigit(nptr[i]) == 1)
 	{
-		num = num * 10 + (str[i++] - '0');
-		if ((num * val) > 2147483647)
+		n = n * 10 + (nptr[i++] - 48);
+		if ((n * sign) > 2147483647)
 			return (-1);
-		if ((num * val) < -2147483648)
+		if ((n * sign) < -2147483648)
 			return (0);
 	}
-	return (num * val);
+	return (sign * n);
 }

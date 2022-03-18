@@ -3,34 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <agallipo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 10:19:30 by agallipo          #+#    #+#             */
-/*   Updated: 2021/06/21 13:50:24 by agallipo         ###   ########.fr       */
+/*   Created: 2021/05/20 17:53:56 by kiru              #+#    #+#             */
+/*   Updated: 2022/02/11 17:35:03 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t destsize)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
+	size_t	k;
+	size_t	len;
 	size_t	i;
-	size_t	ts;
-	size_t	td;
+	size_t	j;
 
-	ts = ft_strlen(src);
-	td = ft_strlen(dest);
-	i = 0;
-	if (destsize < (td + 1))
-		return (destsize + ts);
-	if (destsize > (td + 1))
+	k = 0;
+	len = ft_strlen(dest);
+	if (len < size)
 	{
-		while (src[i] != '\0' && (td + i + 1) < destsize)
+		i = ft_strlen(src) + len;
+		if (size > i + 1)
+			j = i + 1;
+		else
+			j = size;
+		while (k + 1 < j - len)
 		{
-			dest[td + i] = src[i];
-			i++;
+			dest[len + k] = src[k];
+			k++;
 		}
+		dest[len + k] = '\0';
 	}
-	dest[td + i] = '\0';
-	return (ts + td);
+	else
+		i = ft_strlen(src) + size;
+	return (i);
 }
+/*
+int main(void)
+{
+		char *dest;
+		dest =
+		memset(dest, 'r', 15);
+		ft_print_result(ft_strlcat(dest, "lorem ipsum dolor sit amet", 5));
+		write(1, "\n", 1);
+		write(1, dest, 15);
+	return(0);
+}
+*/

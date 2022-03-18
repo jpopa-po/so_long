@@ -3,33 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/21 13:25:54 by agallipo          #+#    #+#             */
-/*   Updated: 2021/06/21 13:25:59 by agallipo         ###   ########.fr       */
+/*   Created: 2021/05/20 18:34:34 by kiru              #+#    #+#             */
+/*   Updated: 2022/02/11 17:09:20 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char	*big, const char *little, size_t len)
 {
 	size_t	i;
-	size_t	n;
-	char	*hay;
+	size_t	c;
+	size_t	len2;
+	char	*tab;
 
-	hay = (char *)haystack;
 	i = 0;
-	if (needle[i] == '\0' || haystack == needle)
-		return (hay);
-	while (hay[i] != '\0' && i < len)
+	tab = (char *)big;
+	len2 = ft_strlen(little);
+	if (len2 == 0 || big == little)
+		return (tab);
+	while (tab[i] != '\0' && i < len)
 	{
-		n = 0;
-		while (hay[i + n] != '\0' && needle[n] != '\0'
-			&& needle[n] == hay[i + n] && (i + n) < len)
-			n++;
-		if (n == ft_strlen(needle))
-			return (hay + i);
+		c = 0;
+		while (tab[i + c] != '\0' && little[c] != '\0'
+			&& tab[i + c] == little[c] && i + c < len)
+			c++;
+		if (c == len2)
+			return (tab + i);
 		i++;
 	}
 	return (0);

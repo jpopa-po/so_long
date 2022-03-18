@@ -3,31 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/21 13:23:37 by agallipo          #+#    #+#             */
-/*   Updated: 2021/06/21 13:23:40 by agallipo         ###   ########.fr       */
+/*   Created: 2021/05/19 21:35:09 by jpopa-po          #+#    #+#             */
+/*   Updated: 2021/06/03 19:58:15 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
+#include<stdlib.h>
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s)
 {
-	char	*ptr;
-	int		size;
+	char	*cpy;
 	int		i;
+	int		len;
 
-	size = ft_strlen(s1);
-	ptr = (char *)malloc(size + 1);
+	len = ft_strlen(s);
 	i = 0;
-	if (!ptr)
+	cpy = (char *)malloc(sizeof(char) * len + 1);
+	if (!cpy || !s)
 		return (NULL);
-	while (size--)
+	while (len--)
 	{
-		ptr[i] = s1[i];
+		cpy[i] = s[i];
 		i++;
 	}
-	ptr[i] = '\0';
-	return (ptr);
+	cpy[i] = '\0';
+	return (cpy);
 }
+/*
+int	main(void)
+{
+	char	ch[6] ="hello";
+	ft_strdup(ch);
+	printf("%s", ch);
+	return (0);
+}*/

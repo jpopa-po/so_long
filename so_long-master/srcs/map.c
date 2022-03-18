@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <agallipo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juancarlospopapopa <juancarlospopapopa@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 18:38:24 by agallipo          #+#    #+#             */
-/*   Updated: 2022/02/01 11:42:37 by agallipo         ###   ########.fr       */
+/*   Created: 2022/03/18 09:10:11 by juancarlosp       #+#    #+#             */
+/*   Updated: 2022/03/18 09:28:16 by juancarlosp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,37 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/21 13:33:24 by agallipo          #+#    #+#             */
-/*   Updated: 2021/06/21 13:33:51 by agallipo         ###   ########.fr       */
+/*   Created: 2021/05/22 20:36:23 by kiru              #+#    #+#             */
+/*   Updated: 2021/05/25 14:01:12 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*ptr;
-	size_t	lens1;
-	size_t	lens2;
-	size_t	i;
-	size_t	j;
+	size_t	len;
+	size_t	len2;
+	int		i;
+	int		j;
+	char	*str;
 
 	if (!s1 || !s2)
 		return (NULL);
-	lens1 = ft_strlen(s1);
-	lens2 = ft_strlen(s2);
-	ptr = malloc(lens1 + lens2 + 1);
-	if (!ptr)
-		return (NULL);
+	len = ft_strlen(s1);
+	len2 = ft_strlen(s2);
 	i = 0;
+	str = malloc(sizeof(char) * (len + len2 + 1));
+	if (!s1 || !s2 || !str)
+		return (NULL);
 	j = 0;
 	while (s1[i])
-		ptr[i++] = s1[j++];
+		str[i++] = s1[j++];
 	j = 0;
 	while (s2[j])
-		ptr[i++] = s2[j++];
-	ptr[i] = '\0';
-	return (ptr);
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	return (str);
 }
+//comp que if null str

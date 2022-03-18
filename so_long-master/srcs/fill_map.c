@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juancarlospopapopa <juancarlospopapopa@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 16:01:25 by agallipo          #+#    #+#             */
-/*   Updated: 2022/03/06 19:01:42 by jpopa-po         ###   ########.fr       */
+/*   Created: 2022/03/18 09:10:05 by juancarlosp       #+#    #+#             */
+/*   Updated: 2022/03/18 09:10:05 by juancarlosp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

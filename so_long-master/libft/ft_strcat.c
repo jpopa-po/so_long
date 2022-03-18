@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/28 18:32:26 by jpopa-po          #+#    #+#             */
-/*   Updated: 2022/02/11 17:09:59 by jpopa-po         ###   ########.fr       */
+/*   Created: 2022/02/11 18:09:45 by jpopa-po          #+#    #+#             */
+/*   Updated: 2022/02/11 18:09:49 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-int	ft_isascii(int c)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	return (c >= 0 && c <= 127);
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (s1[i] != '\0')
+		i++;
+	while (s2[j] != '\0')
+	{
+		s1[i] = s2[j];
+		i++;
+		j++;
+	}
+	s1[i] = '\0';
+	return (s1);
 }

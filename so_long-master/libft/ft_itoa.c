@@ -3,66 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/02 19:45:06 by agallipo          #+#    #+#             */
-/*   Updated: 2021/06/17 12:14:08 by agallipo         ###   ########.fr       */
+/*   Created: 2021/05/28 18:32:35 by jpopa-po          #+#    #+#             */
+/*   Updated: 2021/05/28 18:32:35 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
 
-static int	ft_num_of_digit(int n)
+static int	ft_cont(int n)
 {
-	int	digit;
+	int	count;
 
-	digit = 1;
-	if (n < 0)
-	{
-		digit += 1;
-		n *= -1;
-	}
-	while (n > 9)
+	count = 0;
+	if (n == 0)
+		return (1);
+	while (n > 0)
 	{
 		n /= 10;
-		digit++;
+		count++;
 	}
-	return (digit);
-}
-
-static char	*ft_check_error(int n, char *number)
-{
-	if (n < 0)
-	{
-		number[0] = '-';
-	}
-	if (n == 0)
-		number[0] = '0';
-	return (number);
+	return (count);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*number;
-	int		digit;
+	int		neg;
+	int		len;
+	char	*tab;
 
-	digit = ft_num_of_digit(n);
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	number = (char *)malloc((digit + 1) * sizeof(char));
-	if (!number)
-		return (NULL);
-	number[digit] = '\0';
-	number = ft_check_error(n, number);
+	neg = 0;
 	if (n < 0)
+		neg = 1;
+	if (neg == 1)
 		n *= -1;
-	while (digit > 0)
+	len = ft_cont(n);
+	tab = (char *)malloc(sizeof(char) * len + neg + 1);
+	if (!tab)
+		return (NULL);
+	tab[len + neg] = '\0';
+	while (len > 0)
 	{
-		digit--;
-		if (digit == 0 && number[0] == '-')
-			break ;
-		number[digit] = (n % 10) + '0';
+		tab[--len + neg] = n % 10 + 48;
 		n /= 10;
 	}
-	return (number);
+	if (neg == 1)
+		tab[0] = '-';
+	return (tab);
 }
+/*
+int main(void)
+{
+	printf("%s\n", ft_itoa(-8));
+	return (0);
+}*/

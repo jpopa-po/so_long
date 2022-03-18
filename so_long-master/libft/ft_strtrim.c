@@ -3,47 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/25 12:57:11 by agallipo          #+#    #+#             */
-/*   Updated: 2021/06/21 13:34:44 by agallipo         ###   ########.fr       */
+/*   Created: 2021/05/22 21:07:13 by kiru              #+#    #+#             */
+/*   Updated: 2022/02/11 17:09:18 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
 
-static int	ft_containchar(char *str, char c)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	while (*str)
-	{
-		if (*str++ == c)
-			return (1);
-	}
-	return (0);
-}
-
-char	*ft_strtrim(char *s1, char *set)
-{
-	int	i;
+	int		l;
+	char	*str;
 
 	if (!s1 || !set)
 		return (NULL);
+	while (*s1 != 0 && ft_strchr(set, *s1))
+		s1++;
 	if (*s1 == 0)
 		return (ft_strdup(""));
-	while (*s1)
-	{
-		if (ft_containchar(set, *s1) == 1)
-			s1++;
-		else
-			break ;
-	}
-	i = ft_strlen(s1);
-	while (i > 0)
-	{
-		if (ft_containchar(set, *(s1 + i - 1)) == 1)
-			i--;
-		else
-			break ;
-	}
-	return (ft_substr(s1, 0, i));
+	l = ft_strlen(s1);
+	while (ft_strchr(set, s1[l]))
+		l--;
+	str = ft_substr(s1, 0, l + 1);
+	return (str);
 }

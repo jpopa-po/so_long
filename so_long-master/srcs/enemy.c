@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <agallipo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juancarlospopapopa <juancarlospopapopa@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 11:40:44 by agallipo          #+#    #+#             */
-/*   Updated: 2022/02/01 12:20:44 by agallipo         ###   ########.fr       */
+/*   Created: 2022/03/18 09:09:58 by juancarlosp       #+#    #+#             */
+/*   Updated: 2022/03/18 09:26:44 by juancarlosp      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_enemy_attack(t_pointers *mlx)
 		ft_closewin(mlx);
 	}
 }
+
 int	ft_enemy_moves(int cond, t_pointers *mlx)
 {
 	if (cond == 1)
@@ -59,5 +60,4 @@ int	ft_enemy_moves(int cond, t_pointers *mlx)
 			return (ft_enem_right(mlx));
 	}
 	return (1);
-
 }

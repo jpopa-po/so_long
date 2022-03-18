@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/21 13:41:55 by agallipo          #+#    #+#             */
-/*   Updated: 2021/09/23 11:28:40 by agallipo         ###   ########.fr       */
+/*   Created: 2022/02/11 17:06:50 by jpopa-po          #+#    #+#             */
+/*   Updated: 2022/02/11 17:09:52 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*newlst;
 	t_list	*new;
+	t_list	*n_lst;
 
-	if (!lst || !f)
+	if (!f || !lst)
 		return (NULL);
-	newlst = NULL;
+	n_lst = NULL;
 	while (lst)
 	{
 		new = ft_lstnew(f(lst->content));
 		if (!new)
 		{
-			ft_lstclear(&new, del);
-			return (newlst);
+			ft_lstclear(&n_lst, del);
+			return (n_lst);
 		}
-		ft_lstadd_back(&newlst, new);
+		ft_lstadd_back(&n_lst, new);
 		lst = lst->next;
 	}
-	return (newlst);
+	return (n_lst);
 }
