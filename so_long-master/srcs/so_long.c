@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancarlospopapopa <juancarlospopapopa@    +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 09:10:27 by juancarlosp       #+#    #+#             */
-/*   Updated: 2022/03/18 09:10:46 by juancarlosp      ###   ########.fr       */
+/*   Updated: 2022/03/22 20:15:48 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_free_all(char **map, int i)
+void	ft_free(char **map, int i)
 {
 	while (i >= 0)
 	{
@@ -23,47 +23,47 @@ void	ft_free_all(char **map, int i)
 	exit (0);
 }
 
-int	ft_key_event(int key, t_pointers *mlx)
+int	ft_close(t_ptr *mlx)
 {
-	if (key == 123)
-		ft_left_move(mlx);
-	if (key == 124)
-		ft_right_move(mlx);
-	if (key == 125)
-		ft_up_move(mlx);
-	if (key == 126)
-		ft_down_move(mlx);
-	if (key == 53)
-		ft_closewin(mlx);
-	printf("moves = %d\n", mlx->moves);
+	ft_free(mlx->map_ref, mlx->map.size / mlx->map.len);
+	exit(0);
 	return (0);
 }
 
-int	ft_closewin(t_pointers *mlx)
+int	ft_key_event(int key, t_ptr *mlx)
 {
-	ft_free_all(mlx->map_ref, mlx->map.size / mlx->map.len);
-	exit(0);
+	if (key == 123)
+		ft_left(mlx);
+	if (key == 124)
+		ft_right(mlx);
+	if (key == 125)
+		ft_up(mlx);
+	if (key == 126)
+		ft_down(mlx);
+	if (key == 53)
+		ft_close(mlx);
+	printf("moves = %d\n", mlx->moves);
 	return (0);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_pointers	*mlx;
+	t_ptr	*mlx;
 
 	if (argc != 2)
 	{
 		printf("Invalid arguments\n");
 		return (1);
 	}
-	mlx = ft_calloc(sizeof(t_pointers), 1);
-	mlx->map = ft_create_map(argv, mlx);
+	mlx = ft_calloc(sizeof(t_ptr), 1);
+	mlx->map = ft_make(argv, mlx);
 	mlx->ptr = mlx_init();
 	mlx->win = mlx_new_window(mlx->ptr, (mlx->map.len - 1) * 32,
 			(mlx->map.size / mlx->map.len) * 32, "Hello world!");
-	ft_fill_map_with_images(mlx);
+	ft_print_img(mlx);
 	mlx->moves = 0;
 	mlx->cond = 1;
-	mlx_hook(mlx->win, 17, 1L << 17, ft_closewin, mlx);
+	mlx_hook(mlx->win, 17, 1L << 17, ft_close, mlx);
 	mlx_key_hook(mlx->win, ft_key_event, mlx);
 	mlx_loop(mlx->ptr);
 	return (0);

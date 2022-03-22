@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallipo <agallipo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/24 20:59:47 by agallipo          #+#    #+#             */
-/*   Updated: 2021/12/01 17:54:02 by agallipo         ###   ########.fr       */
+/*   Created: 2021/04/24 20:59:47 by jpopa-po          #+#    #+#             */
+/*   Updated: 2022/03/22 19:53:50 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlen(const char *str)
 
 	i = 0;
 	if (!str)
-		return(0);
+		return (0);
 	while (str[i] != '\0')
 		i++;
 	return (i);
@@ -41,7 +41,7 @@ int	find_error(char *base)
 		while (base[e] != '\0' && base[f] != '\0')
 		{
 			if ((base[e] == base[f] && e != f) || (base[f] == '+'\
-						 || base[f] == '-'))
+						|| base[f] == '-'))
 			{
 				return (1);
 				break ;

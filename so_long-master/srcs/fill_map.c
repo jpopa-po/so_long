@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancarlospopapopa <juancarlospopapopa@    +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 09:10:05 by juancarlosp       #+#    #+#             */
-/*   Updated: 2022/03/18 09:10:05 by juancarlosp      ###   ########.fr       */
+/*   Updated: 2022/03/22 20:26:04 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_fill_map(t_pointers *mlx)
+void	ft_print_in(t_ptr *mlx)
 {
 	int	i;
 
@@ -21,7 +21,7 @@ void	ft_fill_map(t_pointers *mlx)
 	while (mlx->map_ref[i])
 	{
 		if (ft_strlen(mlx->map_ref[i]) != (size_t)mlx->map.len)
-			ft_free_all(mlx->map_ref, i);
+			ft_free(mlx->map_ref, i);
 		else
 		{
 			i++;
@@ -30,9 +30,9 @@ void	ft_fill_map(t_pointers *mlx)
 	}
 }
 
-t_images	ft_init_images(void *mlx_ptr)
+t_img	ft_init_img(void *mlx_ptr)
 {
-	t_images	img;
+	t_img	img;
 
 	img.wall = mlx_xpm_file_to_image(mlx_ptr, "imgs/wall.xpm",
 			&img.width, &img.height);
@@ -49,7 +49,7 @@ t_images	ft_init_images(void *mlx_ptr)
 	return (img);
 }
 
-void	ft_elements_images(t_pointers *mlx, t_images img, int i, int j)
+void	ft_entity(t_ptr *mlx, t_img img, int i, int j)
 {
 	if (mlx->map_ref[i][j] == '1')
 		mlx_put_image_to_window(mlx->ptr, mlx->win, img.wall, j * 32, i * 32);
@@ -77,20 +77,20 @@ void	ft_elements_images(t_pointers *mlx, t_images img, int i, int j)
 	}
 }
 
-void	ft_fill_map_with_images(t_pointers *mlx)
+void	ft_print_img(t_ptr *mlx)
 {
 	int			i;
 	int			j;
-	t_images	img;
+	t_img		img;
 
-	img = ft_init_images(mlx->ptr);
+	img = ft_init_img(mlx->ptr);
 	i = 0;
 	while (i < (mlx->map.size / mlx->map.len))
 	{
 		j = 0;
 		while (j < mlx->map.len)
 		{
-			ft_elements_images(mlx, img, i, j);
+			ft_entity(mlx, img, i, j);
 			j++;
 		}
 		i++;

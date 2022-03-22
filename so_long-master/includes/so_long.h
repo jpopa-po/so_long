@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancarlospopapopa <juancarlospopapopa@    +#+  +:+       +#+        */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 09:09:11 by juancarlosp       #+#    #+#             */
-/*   Updated: 2022/03/18 09:09:21 by juancarlosp      ###   ########.fr       */
+/*   Updated: 2022/03/22 20:30:03 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-typedef struct s_images
+typedef struct s_img
 {
 	void	*character;
 	void	*background;
@@ -29,13 +29,13 @@ typedef struct s_images
 	void	*enemy;
 	int		width;
 	int		height;
-}			t_images;
-typedef struct s_elem
+}			t_img;
+typedef struct s_ent
 {
 	int	player;
 	int	exit;
 	int	collect;
-}				t_elem;
+}				t_ent;
 
 typedef struct s_map
 {
@@ -46,7 +46,7 @@ typedef struct s_map
 	int		fd;
 }				t_map;
 
-typedef struct s_pointers
+typedef struct t_ptr
 {
 	void		*win;
 	void		*ptr;
@@ -58,23 +58,23 @@ typedef struct s_pointers
 	int			cond;
 	int			moves;
 	t_map		map;
-	t_elem		*elem;
-	t_images	img;
-}				t_pointers;
+	t_ent		*ent;
+	t_img		img;
+}				t_ptr;
 
-t_map		ft_create_map(char **argv, t_pointers *mlx);
-void		ft_check_map(t_pointers *mlx);
-int			ft_condition(t_pointers *mlx, char c);
-void		ft_fill_map(t_pointers *mlx);
-int			ft_map_size(char **argv);
-void		ft_free_all(char **map, int i);
-void		ft_fill_map_with_images(t_pointers *mlx);
-void		ft_elements_images(t_pointers *mlx, t_images img, int i, int j);
-t_images	ft_init_images(void *mlx_ptr);
-int			ft_closewin(t_pointers *mlx);
-int			ft_key_event(int key, t_pointers *mlx);
-void		ft_left_move(t_pointers *mlx);
-void		ft_right_move(t_pointers *mlx);
-void		ft_up_move(t_pointers *mlx);
-void		ft_down_move(t_pointers *mlx);
+t_map		ft_make(char **argv, t_ptr *mlx);
+void		ft_check(t_ptr *mlx);
+int			ft_bool(t_ptr *mlx, char c);
+void		ft_print_in(t_ptr *mlx);
+int			ft_size(char **argv);
+void		ft_free(char **map, int i);
+void		ft_print_img(t_ptr *mlx);
+void		ft_entity(t_ptr *mlx, t_img img, int i, int j);
+t_img		ft_init_img(void *mlx_ptr);
+int			ft_close(t_ptr *mlx);
+int			ft_vent(int key, t_ptr *mlx);
+void		ft_left(t_ptr *mlx);
+void		ft_right(t_ptr *mlx);
+void		ft_up(t_ptr *mlx);
+void		ft_down(t_ptr *mlx);
 #endif

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/22 19:54:21 by jpopa-po          #+#    #+#             */
+/*   Updated: 2022/03/22 19:57:18 by jpopa-po         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static char	*ft_readln(t_var *variable, char **line, int fd)
+static char	*ft_rd(t_var *variable, char **line, int fd)
 {
 	while (variable->rd > 0)
 	{
@@ -17,7 +29,7 @@ static char	*ft_readln(t_var *variable, char **line, int fd)
 	return (*line);
 }
 
-static char	*ft_putnl(t_var *variable, char **line)
+static char	*ft_line(t_var *variable, char **line)
 {
 	variable->len = 0;
 	while (line[0][variable->len] != '\n' && line[0][variable->len] != '\0')
@@ -31,7 +43,7 @@ static char	*ft_putnl(t_var *variable, char **line)
 	return (variable->aux);
 }
 
-static char	*ft_end(t_var *variable, char **line)
+static char	*ft_last(t_var *variable, char **line)
 {
 	variable->aux = ft_strdup(*line);
 	free(*line);
@@ -39,7 +51,7 @@ static char	*ft_end(t_var *variable, char **line)
 	return (variable->aux);
 }
 
-static char	*ft_emptyln(char **line)
+static char	*ft_isempty(char **line)
 {
 	free(*line);
 	*line = NULL;
@@ -60,15 +72,15 @@ char	*get_next_line(int fd)
 	variable.buff[variable.rd] = '\0';
 	if (!line)
 		line = ft_strdup("");
-	line = ft_readln(&variable, &line, fd);
+	line = ft_rd(&variable, &line, fd);
 	variable.chk = ft_strchr(line, '\n');
 	if (variable.chk && variable.chk[0] != '\0')
 		variable.temp = ft_strdup(variable.chk + 1);
 	if (line == NULL || line[0] == '\0')
-		return (ft_emptyln(&line));
+		return (ft_isempty(&line));
 	if (variable.temp)
-		return (ft_putnl(&variable, &line));
+		return (ft_line(&variable, &line));
 	else
-		return (ft_end(&variable, &line));
+		return (ft_last(&variable, &line));
 	return (NULL);
 }
