@@ -6,7 +6,7 @@
 /*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 09:09:11 by juancarlosp       #+#    #+#             */
-/*   Updated: 2022/03/22 20:30:03 by jpopa-po         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:32:36 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_img
 	int		width;
 	int		height;
 }			t_img;
+
 typedef struct s_ent
 {
 	int	player;
@@ -46,7 +47,7 @@ typedef struct s_map
 	int		fd;
 }				t_map;
 
-typedef struct t_ptr
+typedef struct s_ptr
 {
 	void		*win;
 	void		*ptr;
@@ -61,7 +62,8 @@ typedef struct t_ptr
 	t_ent		*ent;
 	t_img		img;
 }				t_ptr;
-
+void		ft_valid_map(char **map, int num, int len);
+void		ft_free(char **map, int i);
 t_map		ft_make(char **argv, t_ptr *mlx);
 void		ft_check(t_ptr *mlx);
 int			ft_bool(t_ptr *mlx, char c);
@@ -77,4 +79,9 @@ void		ft_left(t_ptr *mlx);
 void		ft_right(t_ptr *mlx);
 void		ft_up(t_ptr *mlx);
 void		ft_down(t_ptr *mlx);
+size_t		max_len(char *s1, char *s2);
+void		ft_error(char *str);
+void		ft_check_args(int argc, char **argv);
+int			ft_close2(t_ptr *mlx);
+void		ft_free2(char **map, int i);
 #endif
