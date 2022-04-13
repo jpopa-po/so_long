@@ -6,7 +6,7 @@
 /*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 09:10:27 by juancarlosp       #+#    #+#             */
-/*   Updated: 2022/04/13 19:31:54 by jpopa-po         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:49:42 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	ft_free(char **map, int i)
 
 int	ft_key_event(int key, t_ptr *mlx)
 {
-	if (key == 123)
+	if (key == 0)
 		ft_left(mlx);
-	if (key == 124)
+	if (key == 2)
 		ft_right(mlx);
-	if (key == 125)
+	if (key == 1)
 		ft_up(mlx);
-	if (key == 126)
+	if (key == 13)
 		ft_down(mlx);
 	if (key == 53)
 		ft_close2(mlx);

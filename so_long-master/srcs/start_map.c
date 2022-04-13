@@ -6,7 +6,7 @@
 /*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 09:09:47 by juancarlosp       #+#    #+#             */
-/*   Updated: 2022/04/13 19:27:48 by jpopa-po         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:55:48 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ int	ft_bool(t_ptr *mlx, char c)
 		mlx->ent->exit += 1;
 	if (c == 'C')
 		mlx->ent->collect += 1;
-	if (c != 'P' && c != 'E' && c != 'C'
-		&& c != '1' && c != '0' && c != '\n')
+	if (c != 'P' && c != 'E' && c != 'C' && c != '1' && c != '0' && c != '\n')
 		ft_close(mlx);
 	return (0);
 }
@@ -90,7 +89,7 @@ void	ft_check(t_ptr *mlx)
 		}
 		i++;
 	}
-	if (mlx->ent->player != 1 || mlx->ent->exit != 1)
+	if (mlx->ent->player != 1 || mlx->ent->exit != 1 || mlx->ent->collect < 1)
 		ft_free(mlx->map_ref, mlx->map.size / mlx->map.len);
 }
 

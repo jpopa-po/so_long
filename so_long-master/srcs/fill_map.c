@@ -6,7 +6,7 @@
 /*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 09:10:05 by juancarlosp       #+#    #+#             */
-/*   Updated: 2022/04/13 19:28:30 by jpopa-po         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:52:36 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,6 @@ void	ft_entity(t_ptr *mlx, t_img img, int i, int j)
 	if (mlx->map_ref[i][j] == 'C')
 		mlx_put_image_to_window(mlx->ptr, mlx->win,
 			img.collect, j * 32, i * 32);
-	if (mlx->map_ref[i][j] == 'N')
-	{
-		mlx_put_image_to_window(mlx->ptr, mlx->win, img.enemy, j * 32, i * 32);
-		mlx->enem_x = j;
-		mlx->enem_y = i;
-	}
 }
 
 void	ft_print_img(t_ptr *mlx)
