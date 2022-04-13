@@ -6,7 +6,7 @@
 /*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 09:10:27 by juancarlosp       #+#    #+#             */
-/*   Updated: 2022/04/13 17:32:57 by jpopa-po         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:31:54 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_free(char **map, int i)
 		i--;
 	}
 	free(map);
-	exit (0);
+	ft_error("Error, not valid map\n");
 }
 
 int	ft_key_event(int key, t_ptr *mlx)
@@ -34,7 +34,7 @@ int	ft_key_event(int key, t_ptr *mlx)
 	if (key == 126)
 		ft_down(mlx);
 	if (key == 53)
-		ft_close(mlx);
+		ft_close2(mlx);
 	printf("moves = %d\n", mlx->moves);
 	return (0);
 }
@@ -42,7 +42,6 @@ int	ft_key_event(int key, t_ptr *mlx)
 int	ft_close(t_ptr *mlx)
 {
 	ft_free(mlx->map_ref, mlx->map.size / mlx->map.len);
-	exit(0);
 	return (0);
 }
 
@@ -51,22 +50,22 @@ void	ft_check_args(int argc, char **argv)
 	int		len;
 	char	*line;
 
-	len = ft_strlen(argv[1]);
 	if (argc == 1)
 		ft_error("Error, no map found\n");
-	if (argc > 2)
+	if (argc != 2)
 		ft_error("Error, too many arguments\n");
+	len = ft_strlen(argv[1]);
 	if (ft_strrchr(argv[1], '.'))
 	{
 		line = ft_strnstr(argv[1], ".ber", len);
 		if (ft_strlen(line) != 4)
-			ft_error("Error, bad extension, try with a file that ends .ber");
+			ft_error("Error, bad extension, try with a file that ends .ber\n");
 		if (ft_strncmp(ft_strrchr(argv[1], '.'), ".ber", \
 			max_len(ft_strrchr(argv[1], '.'), ".ber")) != 0)
-			ft_error("Error, bad extension, try with a file that ends .ber");
+			ft_error("Error, bad extension, try with a file that ends .ber\n");
 	}
 	else
-		ft_error("Error, incorrect extension, try with a file ended in .ber");
+		ft_error("Error, incorrect extension, try with a file ended in .ber\n");
 }
 
 int	main(int argc, char *argv[])
@@ -78,7 +77,7 @@ int	main(int argc, char *argv[])
 	mlx->map = ft_make(argv, mlx);
 	mlx->ptr = mlx_init();
 	mlx->win = mlx_new_window(mlx->ptr, (mlx->map.len - 1) * 32,
-			(mlx->map.size / mlx->map.len) * 32, "So_long");
+			(mlx->map.size / mlx->map.len) * 32, "So_long by Popitaxx");
 	ft_print_img(mlx);
 	mlx->moves = 0;
 	mlx->cond = 1;
