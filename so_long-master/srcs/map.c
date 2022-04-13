@@ -6,29 +6,18 @@
 /*   By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 09:10:11 by juancarlosp       #+#    #+#             */
-/*   Updated: 2022/03/22 20:12:35 by jpopa-po         ###   ########.fr       */
+/*   Updated: 2022/04/11 21:11:34 by jpopa-po         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_free(char **map, int i)
-{
-	while (i >= 0)
-	{
-		free(map[i]);
-		i--;
-	}
-	free(map);
-	printf("ERROR\n");
-	exit (0);
-}
 
 int	ft_size(char **argv)
 {
 	char	*buff;
 	int		i;
 	int		fd;
+	int		check_gnl;
 
 	fd = open(argv[1], O_RDONLY);
 	buff = malloc(sizeof(char));
