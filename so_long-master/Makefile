@@ -6,11 +6,11 @@
 #    By: jpopa-po <jpopa-po@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/18 09:10:42 by juancarlosp       #+#    #+#              #
-#    Updated: 2022/03/22 20:29:10 by jpopa-po         ###   ########.fr        #
+#    Updated: 2022/04/11 21:17:36 by jpopa-po         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = srcs/so_long.c  srcs/create_map.c srcs/fill_map.c srcs/movements.c
+SRCS = srcs/so_long.c  srcs/start_map.c srcs/fill_map.c srcs/move.c srcs/utils.c
 
 OBJS =  ${SRCS:.c=.o}
 
